@@ -1,6 +1,6 @@
 import {store} from "../App";
 
-const URL = 'ws://localhost:8080'
+const URL = 'wss://srrj6.sse.codesandbox.io/'
 
 let ws = new WebSocket(URL)
 

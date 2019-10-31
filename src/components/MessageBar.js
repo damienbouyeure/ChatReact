@@ -17,7 +17,7 @@ class MessageBar extends React.Component {
         super(props);
 
         this.state = {
-            text: {text: "",  },
+            message: ""
 
         };
         this.handleChange = this.handleChange.bind(this);
@@ -26,16 +26,16 @@ class MessageBar extends React.Component {
 
 
     handleChange(event) {
-        this.setState({text: event.target.value, username: this.props.username[0].username});
+        this.setState({message: event.target.value });
     }
 
     handleSubmit(event) {
         event.preventDefault();
-        if (event.target.text.value.trim() != "") {
+        if (event.target.message.value.trim() != "") {
 
-            ws.send(JSON.stringify(this.props.addMessages(this.state)));
-            this.setState({text: ''});
-            event.target.text.value = "";
+            ws.send(JSON.stringify(this.props.addMessages(this.state.message, this.props.username[0].username)));
+            this.setState({message: ''});
+            event.target.message.value = "";
         }
 
     }
@@ -46,7 +46,7 @@ class MessageBar extends React.Component {
         return <div className="fixed-bottom">
             <form onSubmit={this.handleSubmit}>
                 <InputGroup className="fixed-bottom container">
-                    <FormControl type="text" id="text" value={this.state.text.text} onChange={this.handleChange}/>
+                    <FormControl type="text" id="message" value={this.state.message} onChange={this.handleChange}/>
                     <InputGroup.Append>
                         <Button variant="outline-secondary btn-light">Submit</Button>
                     </InputGroup.Append>

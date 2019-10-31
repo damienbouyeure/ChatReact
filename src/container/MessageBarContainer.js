@@ -15,7 +15,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        addMessages: (text) => dispatch(addMessages(text)),
+        addMessages: (message,username) => dispatch(addMessages(message,username)),
 
     }
 }

@@ -37,8 +37,8 @@ class MessageList extends React.Component {
 
                 <Card body>
 
-                    <p>@{item.username}</p>
-                    <MessageItem content={item.text} />
+                    <p>@{(item.username|| '').toString()}</p>
+                    <MessageItem content={(item.message|| '').toString()} />
 
                 </Card>
                 < br/>    </div>

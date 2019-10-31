@@ -5,7 +5,7 @@ import App from "../App";
 
 class MessageItem extends React.Component {
     render() {
-        return <Twemoji   text={this.props.content} />;
+        return <Twemoji   text={(this.props.content  || '').toString()} />;
     }
 }
 MessageItem.propTypes = {

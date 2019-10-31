@@ -1,6 +1,7 @@
-export const addMessages = text => ({
-    type: 'ADD_MESSAGES',
-    text
+export const addMessages = (message,username) => ({
+    type: 'ADD_MESSAGE',
+    message,
+    username,
 })
 
 export const addUser = username => ({

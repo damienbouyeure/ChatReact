@@ -1,9 +1,7 @@
-import React,{useRef } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import MessageItem from "./MessageItem";
 import Card from 'react-bootstrap/Card';
-import ScrollToBottom, { useScrollToBottom, useSticky } from 'react-scroll-to-bottom';
-import App from "../App";
+
 
 
 class MessageList extends React.Component {
@@ -13,7 +11,6 @@ class MessageList extends React.Component {
         if (this.props.messages.length >= 1) {
             this.scrollToBottom()
         }
-
     }
 
     componentDidUpdate() {

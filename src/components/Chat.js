@@ -1,41 +1,20 @@
 import React from 'react';
 import MessageList from "./MessageList";
-import ScrollToBottom from 'react-scroll-to-bottom';
-import './chat.css';
-import App from "../App";
 import MessageBar from "./MessageBar";
-import {connect} from "react-redux";
+import './chat.css';
+import MessageListContainer from "../container/MessageListContainer";
+import MessageBarContainer from "../container/MessageBarContainer";
 
-
-const mapStateToProps = (state) => {
-    return {
-        text: state.messages,
-        username: state.username
-    }
-}
 
 
 class Chat extends React.Component {
-    constructor(props) {
-        super(props);
-        if (props.username.length < 1) {
-            props.history.push("/");
-        }
-
-
-    }
-
 
     render() {
 
         return (
             <div className="container h-100">
-
-                    <MessageList messages={this.props.text}/>
-
-                <MessageBar username={this.props.username}/>
-
-
+                <MessageListContainer messages={this.props.text}/>
+                <MessageBarContainer username={this.props.username}/>
             </div>
         )
 
@@ -43,4 +22,4 @@ class Chat extends React.Component {
     }
 }
 
-export default connect(mapStateToProps)(Chat);
+export default Chat;

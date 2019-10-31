@@ -12,9 +12,12 @@ ws.onopen = () => {
 };
 
 ws.onmessage = evt => {
-
+    try{
     const action = JSON.parse(evt.data)
-    store.dispatch(action);
+    store.dispatch(action)}
+    catch (e) {
+        console.error(e)
+    }
 }
 
 

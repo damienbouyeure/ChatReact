@@ -1,13 +1,13 @@
 import React from 'react';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Form from 'react-bootstrap/Form';
+
 import FormControl from 'react-bootstrap/FormControl'
 import Button from 'react-bootstrap/Button';
-import {connect} from  "react-redux";
+import {connect} from "react-redux";
 import {addMessages} from "../action";
 import App from "../App";
 import MessageList from "./MessageList";
-
 
 
 const mapDispatchToProps = dispatch => {
@@ -21,21 +21,22 @@ class MessageBar extends React.Component {
 
     constructor(props) {
         super(props);
+
         this.state = {
-            text:  {text: ""},
+            text: {text: "",  },
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+
     handleChange(event) {
-    this.setState({text: event.target.value});
+        this.setState({text: event.target.value, username: this.props.username[0].username});
     }
+
     handleSubmit(event) {
         event.preventDefault();
-        if(event.target.text.value != "") {
-
-
-           this.props.addMessages(this.state);
+        if (event.target.text.value.trim() != "") {
+            this.props.addMessages(this.state);
             this.setState({text: ''});
             event.target.text.value = "";
         }
@@ -45,16 +46,15 @@ class MessageBar extends React.Component {
 
     render() {
 
-        return            <div className="fixed-bottom">
-            <form  onSubmit={this.handleSubmit}>
-            <InputGroup className="fixed-bottom container">
-                <FormControl    type="text"  id="text"  value={this.state.text.text}  onChange={this.handleChange}/>
-                <InputGroup.Append>
-                    <Button variant="outline-secondary btn-light"  >Submit</Button>
-                </InputGroup.Append>
-            </InputGroup>
+        return <div className="fixed-bottom">
+            <form onSubmit={this.handleSubmit}>
+                <InputGroup className="fixed-bottom container">
+                    <FormControl type="text" id="text" value={this.state.text.text} onChange={this.handleChange}/>
+                    <InputGroup.Append>
+                        <Button variant="outline-secondary btn-light">Submit</Button>
+                    </InputGroup.Append>
+                </InputGroup>
             </form>
-
 
 
         </div>;
